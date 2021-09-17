@@ -1,0 +1,41 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "TgsContext",
+   "ContextNamespace": "Entities",
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": true,
+   "IncludeConnectionString": false,
+   "ModelNamespace": "Entities",
+   "OutputContextPath": "Entities",
+   "OutputPath": "Entities\/Models",
+   "ProjectRootNamespace": "Tgs.Sms.Plivo.Repositories",
+   "Schemas": [
+      {
+         "Name": "dbo"
+      }
+   ],
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "dbo.brands",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": ".tgs",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": true,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}
