@@ -96,7 +96,7 @@ pipeline {
                             --set rabbit.vhost="$tgs_rabbit_vhost"
 					'''
 					sh '''
-						helm template Deployment/k8s/plivo \
+						helm template deployment/k8s/plivo \
 							--set image.tag=${TAG} \
 							--set namespace=${kube_ns} \
 							--set connectionStrings.tgs="$tgs_tgs" \
