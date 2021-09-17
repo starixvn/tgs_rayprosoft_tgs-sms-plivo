@@ -1,17 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<UserSecretsId>04c53175-247c-4751-93f0-a545f477063e</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<GlobalNugetConfig>$(UserProfile)\AppData\Roaming\NuGet\NuGet.Config</GlobalNugetConfig>
+		<GlobalNugetConfig Condition="'$(UserProfile)'==''">$(HOME)/.nuget/NuGet/NuGet.Config</GlobalNugetConfig>
+		<DockerfileBuildArguments>--build-arg "BuildConfiguration=$(Configuration)" --secret id=nuget,src="$(GlobalNugetConfig)"</DockerfileBuildArguments>
+		<DockerfileTag Condition="$(DockerfileTag) == ''">sms-plivo</DockerfileTag>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Tgs.MessageQueue.RabbitMQ" Version="0.0.4" />
-    <PackageReference Include="TGS.SmsReceiver" Version="0.0.4-alpha" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
+		<PackageReference Include="Tgs.MessageQueue.RabbitMQ" Version="0.0.4" />
+		<PackageReference Include="TGS.SmsReceiver" Version="0.0.4-alpha" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Tgs.Sms.Plivo.Core\Tgs.Sms.Plivo.Core.csproj" />
-    <ProjectReference Include="..\Tgs.Sms.Plivo.Repositories\Tgs.Sms.Plivo.Repositories.csproj" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\Tgs.Sms.Plivo.Core\Tgs.Sms.Plivo.Core.csproj" />
+		<ProjectReference Include="..\Tgs.Sms.Plivo.Repositories\Tgs.Sms.Plivo.Repositories.csproj" />
+	</ItemGroup>
 </Project>
