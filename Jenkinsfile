@@ -6,7 +6,7 @@ pipeline {
 	environment {
 		BuildConfiguration = 'Debug'
 		ImageName = "registry.gitlab.com/rayprosoft/turnkey-gaming-system/sms-plivo"
-        ImageTagUrl = "https://gitlab.com/api/v4/projects/20478010/registry/repositories/2291832/tags"
+        ImageTagUrl = "https://gitlab.com/api/v4/projects/20478010/registry/repositories/2292536/tags"
 	}
 
 	stages {
@@ -96,7 +96,7 @@ pipeline {
                             --set rabbit.vhost="$tgs_rabbit_vhost"
 					'''
 					sh '''
-						helm template Deployment/k8s/plivo \
+						helm template deployment/k8s/plivo \
 							--set image.tag=${TAG} \
 							--set namespace=${kube_ns} \
 							--set connectionStrings.tgs="$tgs_tgs" \
