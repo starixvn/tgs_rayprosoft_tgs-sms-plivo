@@ -121,7 +121,8 @@ pipeline {
                                     --set rabbit.url="$tgs_rabbit_url" \
                                     --set rabbit.user="$tgs_rabbit_user" \
                                     --set rabbit.password="$tgs_rabbit_pass" \
-                                    --set rabbit.vhost="$tgs_rabbit_vhost" -f - | kubectl -n ${kube_ns} apply -f -
+                                    --set rabbit.vhost="$tgs_rabbit_vhost" \ 
+                                    | kubectl -n ${kube_ns} apply -f -
                                 {
                                     "nodeSelector": $node_selector,
                                     "tolerations": [$dedicated],
