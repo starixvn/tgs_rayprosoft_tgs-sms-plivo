@@ -98,7 +98,7 @@ pipeline {
                             println node_selector
 
                             sh """
-                                helm template deployment/k8s/plivo \
+                                cat << EOF | yq e -P | helm template deployment/k8s/plivo \
                                     --set image.tag=${TAG} \
                                     --set namespace=${kube_ns} \
                                     --set connectionStrings.tgs="$tgs_tgs" \
@@ -114,14 +114,15 @@ pipeline {
                                 }
                             """
                             sh """
-                                helm template deployment/k8s/plivo \
+                                cat << EOF | yq e -P |  helm template deployment/k8s/plivo \
                                     --set image.tag=${TAG} \
                                     --set namespace=${kube_ns} \
                                     --set connectionStrings.tgs="$tgs_tgs" \
                                     --set rabbit.url="$tgs_rabbit_url" \
                                     --set rabbit.user="$tgs_rabbit_user" \
                                     --set rabbit.password="$tgs_rabbit_pass" \
-                                    --set rabbit.vhost="$tgs_rabbit_vhost" 
+                                    --set rabbit.vhost="$tgs_rabbit_vhost" \
+                                    -f - \ 
                                     | kubectl -n ${kube_ns} apply -f -
                                 {
                                     "nodeSelector": $node_selector,
